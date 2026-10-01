@@ -1,0 +1,35 @@
+[project]
+name = "document-search"
+version = "0.1.0"
+description = "Small document search service"
+requires-python = ">=3.13,<3.14"
+dependencies = [
+    "uvicorn>=0.34,<1",
+    "sqlalchemy[asyncio]>=2.0,<3",
+    "asyncpg>=0.30,<1",
+    "alembic>=1.15,<2",
+    "elasticsearch[async]>=8.17,<9",
+    "pydantic-settings>=2.8,<3",
+    "fastapi[standard]>=0.142.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8,<10",
+    "pytest-asyncio>=0.26,<2",
+    "pytest-cov>=6,<8",
+    "httpx>=0.28,<1",
+    "ruff>=0.11,<1",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.ruff]
+target-version = "py313"
+line-length = 88
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
